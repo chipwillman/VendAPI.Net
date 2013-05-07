@@ -11,34 +11,30 @@ After downloading the code, copy VendAPITest/config.app.master to VendAPITest/co
 Open the config.app and set the Url, username and password for your Vend Store
 
 ### Implemented Features
-Retrieve Products with all non deprecated filters
-
-Retrieve Registers
-
-Create Register Sale
-
+* Retrieve Products with all non deprecated filters
+* Retrieve Registers
+* Create Register Sale
 
 ### Not yet implemented
-Saving Products
-
-Requesting Stock Consignments
-
-Saving Stock Consignments
-
-
+* Saving Products
+* Requesting Stock Consignments
+* Saving Stock Consignments
 
 ### Usage Retreive
 
 	var vendApi = new VendApi(Url, Username, Password)
 	var products = vendApi.GetProducts(Product.OrderBy.name, false, true);
-	var register = vendApi.GetRegisters();
+	var registers = vendApi.GetRegisters();
 
 
 ### Usage Save
 the products where selected from the available products returned from GetProducts
 
-	            var registerSale = new RegisterSale
-                                   {
+	var register = registers[0];
+	var beer = products.First(p => p.handle == "tshirt");
+	var parma = products.First(p => p.handle == "coffee");
+        var registerSale = new RegisterSale
+                          {
                                        RegisterId = register.Id,
                                        CustomerId = "null",
                                        SaleDate = DateTime.UtcNow.ToString("u"),
