@@ -10,11 +10,70 @@ After downloading the code, copy VendAPITest/config.app.master to VendAPITest/co
 
 Open the config.app and set the Url, username and password for your Vend Store
 
-### Usage
+### Implemented Features
+Retrieve Products with all non deprecated filters
+
+Retrieve Registers
+
+Create Register Sale
+
+
+### Not yet implemented
+Saving Products
+
+Requesting Stock Consignments
+
+Saving Stock Consignments
+
+
+
+### Usage Retreive
 
 	var vendApi = new VendApi(Url, Username, Password)
 	var products = vendApi.GetProducts(Product.OrderBy.name, false, true);
+	var register = vendApi.GetRegisters();
 
-Examples of posting can be found in the Unit Tests
+
+### Usage Save
+
+	            var registerSale = new RegisterSale
+                                   {
+                                       RegisterId = register.Id,
+                                       CustomerId = "null",
+                                       SaleDate = DateTime.UtcNow.ToString("u"),
+                                       UserName = "test",
+                                       TotalPrice = parma.Price + (parma.Price * 2),
+                                       TotalTax = beer.Tax + (beer.Tax * 2),
+                                       TaxName = "GST",
+                                       Status = "SAVED",
+                                       InvoiceNumber = "102",
+                                       InvoiceSequence = 102,
+                                       Note = null,
+                                       RegisterSaleProducts = new[]
+                                                                  {
+                                                                      new RegisterSaleProduct
+                                                                          {
+                                                                              ProductId = parma.Id,
+                                                                              Quantity = 1,
+                                                                              Price = parma.Price,
+                                                                              Tax = parma.Tax,
+                                                                              TaxId = parma.TaxId,
+                                                                              TaxTotal = parma.Tax
+                                                                          },
+                                                                      new RegisterSaleProduct
+                                                                          {
+                                                                              ProductId = beer.Id,
+                                                                              Quantity = 2,
+                                                                              Price = beer.Price,
+                                                                              Tax = beer.Tax,
+                                                                              TaxTotal = beer.Tax * 2
+                                                                          }
+
+                                                                  }
+                                   };
+
+            var savedRegisterSale = new VendApi(Url, Username, Password).SaveRegisterSale(registerSale);
+
+
 
 	
