@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+    <add key="Url" value="http://yourstore.vendhq.com" />
+    <add key="Username" value="your_username" />
+    <add key="Password" value="your_password" />
+  </appSettings>
+</configuration>
