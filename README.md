@@ -35,6 +35,7 @@ Saving Stock Consignments
 
 
 ### Usage Save
+the products where selected from the available products returned from GetProducts
 
 	            var registerSale = new RegisterSale
                                    {
