@@ -12,7 +12,7 @@
     /// The test vend request.
     /// </summary>
     [TestClass]
-    public class TestGet : BaseVendTest
+    public class TestVendRequest : BaseVendTest
     {
         [TestMethod]
         public void ShouldBeAbleToConnectToTheApiAndRequestRecentSales()

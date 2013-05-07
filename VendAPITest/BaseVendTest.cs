@@ -33,5 +33,23 @@
                 return result;
             }
         }
+
+        public string Product1
+        {
+            get
+            {
+                var result = ConfigurationManager.AppSettings["Product1"];
+                return result;
+            }
+        }
+
+        public string Product2
+        {
+            get
+            {
+                var result = ConfigurationManager.AppSettings["Product2"];
+                return result;
+            }
+        }
     }
 }

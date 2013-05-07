@@ -110,5 +110,33 @@
 
             return result;
         }
+
+        public Product SaveProduct(Product product)
+        {
+            Product result = null;
+
+            var vendRequest = new VendRequest(this.Url, this.Username, this.Password);
+            var response = vendRequest.Post("/api/products", product.ToJson());
+            if (!string.IsNullOrEmpty(response))
+            {
+                var productWrapper = response.FromJson<ProductWrapper>();
+                result = productWrapper.Product;
+            }
+
+            return result;
+        }
+
+        public Product GetProduct(Guid id)
+        {
+            Product result = null;
+            var response = new VendRequest(this.Url, this.Username, this.Password).Get("/api/1.0/product/" + id);
+            if (!string.IsNullOrEmpty(response))
+            {
+                var productWrapper = response.FromJson<Product>();
+                result = productWrapper;
+            }
+
+            return result;
+        }
     }
 }

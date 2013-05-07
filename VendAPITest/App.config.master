@@ -4,5 +4,7 @@
     <add key="Url" value="http://yourstore.vendhq.com" />
     <add key="Username" value="your_username" />
     <add key="Password" value="your_password" />
+    <add key="product1" value="coffee"/>
+    <add key="product2" value="tshirt"/>
   </appSettings>
 </configuration>
