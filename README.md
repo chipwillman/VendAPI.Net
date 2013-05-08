@@ -6,7 +6,7 @@ VendAPI.Net
 
 ### Setup - To run the unit tests:
 
-After downloading the code, copy VendAPITest/config.app.master to VendAPITest/condig.app
+After downloading the code, copy VendAPITest/config.app.master to VendAPITest/config.app
 
 Open the config.app and set the Url, username and password for your Vend Store
 
