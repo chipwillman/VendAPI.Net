@@ -27,7 +27,8 @@ If the request does not make it you are most like on a private network and we wi
 
 If you are on a corporate network, ask your network administrator to add a port forward for port 38001 from yourstore.vendhq.com to your internal network address machine.
 
-If you have not IT team and are connected to the internet through an ADSL router perform the following
+If you do not have an IT team and are connected to the internet through an ADSL router perform the following
+
 1. Open a command prompt (Start->Run-> cmd.exe)
 2. Type ipconfig and note your default gateway (Default Gateway . . . . . . 192.168.1.1) and private ip address (IPv4 Address. . . . . . 192.168.1.3)
 3. Open a web browser and navigate to your Default Gateway (http://192.168.1.1)
