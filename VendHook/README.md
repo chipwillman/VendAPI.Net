@@ -15,11 +15,11 @@ Assumes the application will be run on a windows computer with IIS installed loc
 2. Right click on VendHook and select properties
 3. Click on Web and ensure "Use Visual Studio Development Server is checked and note the specific port (38001)
 4. Right click on VendHook and start a debugging session
-5. Open a web browser and go to google and search for "what my ip"
+5. Open a web browser and go to google and search for "what my ip" (240.48.215.213)
 6. Google will response with Your public IP address is XXX.XXX.XXX.XXX (192.168.1.3) copy this number to notepad
 7. Go to your vend store setup page and add /api to the end http://yourstore.vendhp.com/setup/api
 8. Click the button Add Web Hook
-9. Enter the URL http://your_public_ip_address:port/api/customer (http://192.168.1.3:38001/api/customer
+9. Enter the URL http://your_public_ip_address:port/api/customer (http://240.48.215.213:38001/api/customer)
 10. Ensure the type is set to customer.update
 11. Click Save
 12. Click on the view link for the customer.update web hook
@@ -41,6 +41,12 @@ If you do not have an IT team and are connected to the internet through an ADSL 
 7. Click Add
 8. Google your routers model number and " port forward" for specific instructions for your router
 9. Rerun the steps from the above steps 12. - 14.
+
+If it is working you can map the other web hooks
+sale.update		http://240.48.215.213:3801/api/registersales	
+product.update		http://240.48.215.213:3801/api/product	
+inventory.update	http://240.48.215.213:3801/api/inventory
+
 
 ### Implemented Features
 * Hook for Customers
