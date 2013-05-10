@@ -318,7 +318,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
-          <DevelopmentServerPort>57589</DevelopmentServerPort>
+          <DevelopmentServerPort>38001</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/VendHook</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
