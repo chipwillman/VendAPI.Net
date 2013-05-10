@@ -34,7 +34,7 @@ If you do not have an IT team and are connected to the internet through an ADSL 
 3. Open a web browser and navigate to your Default Gateway (http://192.168.1.1)
 4. Log on to your router.  If you don't know the password or never set one, Google your routers model/product number and " default credentials"  You can reset your router back to factory defaults to use the default credentials, but you will need to resetup your ISP connection details.
 5. Go to your advanced settings->Port Forward
-6. Add a port forward for External Port Start 38001 to External Port End 38001 - Protocol TCP - Internal Port Start 38001 to Internal Port End 38001
+6. Add a port forward for External Port Start 38001 to External Port End 38001 - Protocol TCP - Internal Port Start 38001 to Internal Port End 38001 to your Private IPv4 address (38001 - 38001 - TCP - 38001 - 38001 - 192.168.1.3)
 7. Click Add
 8. Google your routers model number and " port forward" for specific instructions for your router
 
