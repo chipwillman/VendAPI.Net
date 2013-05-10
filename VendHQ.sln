@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendAPITest", "VendAPITest\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendAPI", "VendAPI\VendAPI.csproj", "{DA4CE8CE-B671-4985-A942-24841D31D023}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendHook", "VendHook\VendHook.csproj", "{55E2EA79-6B6B-4B69-9CA2-AE04F119FC12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendHook.Tests", "VendHook.Tests\VendHook.Tests.csproj", "{1F14CFA6-D690-4987-8765-F8F16481A996}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{DA4CE8CE-B671-4985-A942-24841D31D023}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA4CE8CE-B671-4985-A942-24841D31D023}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA4CE8CE-B671-4985-A942-24841D31D023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55E2EA79-6B6B-4B69-9CA2-AE04F119FC12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55E2EA79-6B6B-4B69-9CA2-AE04F119FC12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55E2EA79-6B6B-4B69-9CA2-AE04F119FC12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55E2EA79-6B6B-4B69-9CA2-AE04F119FC12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F14CFA6-D690-4987-8765-F8F16481A996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F14CFA6-D690-4987-8765-F8F16481A996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F14CFA6-D690-4987-8765-F8F16481A996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F14CFA6-D690-4987-8765-F8F16481A996}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

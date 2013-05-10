@@ -42,7 +42,10 @@
   <ItemGroup>
     <Compile Include="Extentions\JsonExtention.cs" />
     <Compile Include="Extentions\StringExtensions.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Inventory.cs" />
+    <Compile Include="Models\Outlet.cs" />
     <Compile Include="Models\PriceBookEntries.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductList.cs" />
