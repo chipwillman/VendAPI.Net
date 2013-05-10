@@ -40,7 +40,20 @@ If you do not have an IT team and are connected to the internet through an ADSL 
 6. Add a port forward for External Port Start 38001 to External Port End 38001 - Protocol TCP - Internal Port Start 38001 to Internal Port End 38001 to your Private IPv4 address (38001 - 38001 - TCP - 38001 - 38001 - 192.168.1.3)
 7. Click Add
 8. Google your routers model number and " port forward" for specific instructions for your router
-9. Rerun the steps from the above steps 12. - 14.
+9. Rerun the steps from the above steps 12 - 14
+
+Also, your windows firewall may be active
+
+1. Click on Start->Control Panel->Windows Firewall
+2. Click on Advanced Settings
+3. Click on Inbound Rule
+4. Click on New Rules
+5. Select Port and click next
+6. Set the Specific port to "port" ("38001")
+7. Click Next and Next and Next
+8. Enter name and optional description
+9. Click Finish
+10. Rerun the step from the above steps 12 - 14
 
 If it is working you can map the other web hooks
 sale.update		http://240.48.215.213:3801/api/registersales	
