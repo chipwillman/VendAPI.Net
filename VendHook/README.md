@@ -3,6 +3,9 @@ VendHook
 
 .Net MVC Web Api to utilize the Vend Hooks
 
+This is the default MCV web applications
+The only files changes are in /Controllers
+
 
 ### Setup 
 
@@ -13,10 +16,10 @@ Assumes the application will be run on a windows computer with IIS installed loc
 3. Click on Web and ensure "Use Visual Studio Development Server is checked and note the specific port (38001)
 4. Right click on VendHook and start a debugging session
 5. Open a web browser and go to google and search for "what my ip"
-6. Google will response with Your public IP address is XXX.XXX.XXX.XXX copy this number to notepad
+6. Google will response with Your public IP address is XXX.XXX.XXX.XXX (192.168.1.3) copy this number to notepad
 7. Go to your vend store setup page and add /api to the end http://yourstore.vendhp.com/setup/api
 8. Click the button Add Web Hook
-9. Enter the URL http://your_public_ip_address:38001/api/customer
+9. Enter the URL http://your_public_ip_address:port/api/customer (http://192.168.1.3:38001/api/customer
 10. Ensure the type is set to customer.update
 11. Click Save
 12. Click on the view link for the customer.update web hook
@@ -37,7 +40,7 @@ If you do not have an IT team and are connected to the internet through an ADSL 
 6. Add a port forward for External Port Start 38001 to External Port End 38001 - Protocol TCP - Internal Port Start 38001 to Internal Port End 38001 to your Private IPv4 address (38001 - 38001 - TCP - 38001 - 38001 - 192.168.1.3)
 7. Click Add
 8. Google your routers model number and " port forward" for specific instructions for your router
-
+9. Rerun the steps from the above steps 12. - 14.
 
 ### Implemented Features
 * Hook for Customers
