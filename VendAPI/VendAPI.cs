@@ -132,10 +132,49 @@
             var response = new VendRequest(this.Url, this.Username, this.Password).Get("/api/1.0/product/" + id);
             if (!string.IsNullOrEmpty(response))
             {
-                var productWrapper = response.FromJson<Product>();
-                result = productWrapper;
+                var product = response.FromJson<Product>();
+                result = product;
             }
 
+            return result;
+        }
+
+        public Consignment[] GetStockMovements()
+        {
+            var result = new Consignment[0];
+            var response = new VendRequest(this.Url, this.Username, this.Password).Get("/api/stock_movements");
+            if (!string.IsNullOrEmpty(response))
+            {
+                var consignmentWrapper = response.FromJson<StockTransferWrapper>();
+                result = consignmentWrapper.StockMovements;
+            }
+            return result;
+        }
+
+        public Consignment SaveStockTransfer(StockTransfer stockTransfer)
+        {
+            Consignment result = null;
+
+            var vendRequest = new VendRequest(this.Url, this.Username, this.Password);
+            var response = vendRequest.Post("/api/stock_transfers", stockTransfer.ToJson());
+            if (!string.IsNullOrEmpty(response))
+            {
+                var consignmentWrapper = response.FromJson<ConsignmentWrapper>();
+                result = consignmentWrapper.Consignment;
+            }
+
+            return result;
+        }
+
+        public Consignment[] GetConsignments()
+        {
+            var result = new Consignment[0];
+            var response = new VendRequest(this.Url, this.Username, this.Password).Get("/api/consignment");
+            if (!string.IsNullOrEmpty(response))
+            {
+                var consignmentWrapper = response.FromJson<ConsignmentWrapper>();
+                result = consignmentWrapper.Consignments;
+            }
             return result;
         }
     }

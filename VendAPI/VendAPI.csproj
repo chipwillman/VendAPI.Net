@@ -42,6 +42,9 @@
   <ItemGroup>
     <Compile Include="Extentions\JsonExtention.cs" />
     <Compile Include="Extentions\StringExtensions.cs" />
+    <Compile Include="Models\Consignment.cs" />
+    <Compile Include="Models\ConsignmentProduct.cs" />
+    <Compile Include="Models\ConsignmentWrapper.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Inventory.cs" />
@@ -57,6 +60,8 @@
     <Compile Include="Models\RegisterSalePayment.cs" />
     <Compile Include="Models\RegisterSaleProduct.cs" />
     <Compile Include="Models\RegisterSaleWrapper.cs" />
+    <Compile Include="Models\StockTransfer.cs" />
+    <Compile Include="Models\StockTransferWrapper.cs" />
     <Compile Include="Models\Totals.cs" />
     <Compile Include="VendAPI.cs" />
     <Compile Include="VendRequest.cs" />

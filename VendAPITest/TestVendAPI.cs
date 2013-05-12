@@ -124,5 +124,44 @@
             Product tshirtFromWebService = vendApi.GetProduct(tshirt.Id);
             Assert.AreNotEqual(previousValue, tshirtFromWebService.Description);
         }
+
+        [TestMethod]
+        public void ShouldBeAbleToGetStockMovements()
+        {
+            var vendApi = new VendApi(this.Url, this.Username, this.Password);
+            var consignments = vendApi.GetStockMovements();
+            Assert.IsNotNull(consignments);
+        }
+
+        [TestMethod]
+        public void ShouldBeAbleToPostASockTransfer()
+        {
+            var vendApi = new VendApi(this.Url, this.Username, this.Password);
+            var registers = vendApi.GetRegisters();
+            var products = new VendApi(this.Url, this.Username, this.Password).GetProducts(Product.OrderBy.name, false, true);
+            var product1 = products.First(p => p.Handle == this.Product1);
+            var product2 = products.First(p => p.Handle == this.Product2);
+
+            var mainRegister = registers.First(r => r.Name == "Main Register");
+            Assert.IsNotNull(mainRegister, "This test requires that the main register exists.");
+            var consignment = new StockTransfer
+                                  {
+                                      Name = "New Name",
+                                      Date = DateTime.UtcNow.ToString("u"),
+                                      Type = "OUTLET",
+                                      OutletId = mainRegister.OutletId,
+                                      SourceOutletId = mainRegister.OutletId,
+                                      Status = "OPEN",
+                                  };
+            vendApi.SaveStockTransfer(consignment);
+        }
+
+        [TestMethod]
+        public void ShouldBeAbleToGetConsignments()
+        {
+            var vendApi = new VendApi(this.Url, this.Username, this.Password);
+            var consignments = vendApi.GetConsignments();
+            Assert.IsNotNull(consignments);
+        }
     }
 }
