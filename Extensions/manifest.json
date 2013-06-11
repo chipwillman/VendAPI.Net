@@ -1,0 +1,12 @@
+{
+  "name": "VendExtension",
+  "version": "1.0",
+  "description": "Forward Register Sales to Vend Hook!",
+  "permissions": ["webRequest", "webRequestBlocking",
+                  "*://*.vendhq.com/*"],
+  "background": {
+    "scripts": ["jquery-1.8.3.js", "background.js"]
+  },
+
+  "manifest_version": 2
+}
