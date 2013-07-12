@@ -177,5 +177,16 @@
             }
             return result;
         }
+
+        public Customer GetCustomer(string id)
+        {
+            Customer result = null;
+            var response = new VendRequest(this.Url, this.Username, this.Password).Get("/api/1.0/customer/" + id);
+            if (!string.IsNullOrEmpty(response))
+            {
+                result = response.FromJson<Customer>();
+            }
+            return result;
+        }
     }
 }
