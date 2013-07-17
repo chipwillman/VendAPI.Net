@@ -9,7 +9,10 @@ The vend hook web site is designed to consume web hooks from the VendHQ online s
 
 The RegisterSale Controller looks for products that have been purchased of type "food".  When found, it will print the food order to the configured kitchen printer.
 
-To setup a web hook, you will need to forward the post from VendHQ to a windows computer where the printer is installed.
+The CashRegister Controller looks for new register sale payments and with send the draw kick command to the printer.  This allows automatic opening of the Cash Drawer in environments where receipts are not used such as the hospitality industry, ie. pubs and bars.
+
+To setup a remote printer, you will need to forward a webhook post from VendHQ to a windows computer where the printer is installed.
+To setup the draw kick, you will need to install a google chrome extension that makes a web posts to your POS terminal.
 
 ## Setup a port Forward
 1. Select a port to use, for example 55021
@@ -17,8 +20,9 @@ To setup a web hook, you will need to forward the post from VendHQ to a windows 
 3. Click on Advanced -> Port Forwarding
 4. Set the server address to the computer with the printer's IP address (192.168.1.7)
 5. Set the External Port Start and External Port End to your port (55021)
-6. Set the Internal Port to 80
-7. Save 
+6. Set the Internal Port Start to 80
+7. Set the Remote IP Address to 
+8. Save 
 
 ## Setup the web application
 
@@ -38,10 +42,17 @@ There are two versions included
 
 #Know your external IP Address
 1. Google "Whats my ip address"
+2. Your public IP address is <your external IP address>
 
 #Known your computers internal IP address
 1. Start->Run->cmd.exe
 2. at the command prompt type: ipconfig
+3. IPv4 Address .  .  .  .  .  .  . : <your internal address>
+
+#Know your stores external IP address
+1. Start->Run->cmd.exe
+2. at the command prompt type: ping <yourstore>.vendhq.com
+3. Reply from <your external IP address>: bytes=32 time=428ms TTL=44
 
 #Install web app
 1. Open IIS Management Studio: Start->Control Panel->Administration Tools->Internet Information Services (IIS) Manager
@@ -54,7 +65,7 @@ There are two versions included
 6. Click OK
 7. Test web site
 	a. Open browser and navigate to http://localhost/VendHook/
-	b. Verify the browser does not return 404 page not found
+	b. Verify the browser does not return 404: page not found
 
 ## Setup the web hook
 1. Log on to your Vend Store
@@ -115,45 +126,45 @@ Open the app.config and set the Url, username and password for your Vend Store
 
 
 ### Usage Save
-the products where selected from the available products returned from GetProducts
+the products were selected from the available products returned from GetProducts
 
 	var register = registers[0];
 	var beer = products.First(p => p.handle == "tshirt");
 	var parma = products.First(p => p.handle == "coffee");
-        var registerSale = new RegisterSale
-		{
-     			RegisterId = register.Id,
-			CustomerId = "null",
-			SaleDate = DateTime.UtcNow.ToString("u"),
-			UserName = "test",
-			TotalPrice = parma.Price + (beer.Price * 2),
-			TotalTax = parma.Tax + (beer.Tax * 2),
-			TaxName = "GST",
-			Status = "SAVED",
-			InvoiceNumber = "102",
-			InvoiceSequence = 102,
-			Note = null,
-			RegisterSaleProducts = new[]
-				{
- 					new RegisterSaleProduct
-						{
-							ProductId = parma.Id,
-							Quantity = 1,
-							Price = parma.Price,
-							Tax = parma.Tax,
-							TaxId = parma.TaxId,
-							TaxTotal = parma.Tax
- 						},
-					new RegisterSaleProduct
-						{
-							ProductId = beer.Id,
-							Quantity = 2,
-							Price = beer.Price,
-							Tax = beer.Tax,
-							TaxTotal = beer.Tax * 2
-						}
-				}
-		};
+	var registerSale = new RegisterSale
+	{
+		RegisterId = register.Id,
+		CustomerId = "null",
+		SaleDate = DateTime.UtcNow.ToString("u"),
+		UserName = "test",
+		TotalPrice = parma.Price + (beer.Price * 2),
+		TotalTax = parma.Tax + (beer.Tax * 2),
+		TaxName = "GST",
+		Status = "SAVED",
+		InvoiceNumber = "102",
+		InvoiceSequence = 102,
+		Note = null,
+		RegisterSaleProducts = new[]
+			{
+				new RegisterSaleProduct
+					{
+						ProductId = parma.Id,
+						Quantity = 1,
+						Price = parma.Price,
+						Tax = parma.Tax,
+						TaxId = parma.TaxId,
+						TaxTotal = parma.Tax
+					},
+				new RegisterSaleProduct
+					{
+						ProductId = beer.Id,
+						Quantity = 2,
+						Price = beer.Price,
+						Tax = beer.Tax,
+						TaxTotal = beer.Tax * 2
+					}
+			}
+	};
 
 	var savedRegisterSale = new VendApi(Url, Username, Password).SaveRegisterSale(registerSale);
 
