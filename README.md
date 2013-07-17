@@ -47,7 +47,7 @@ To setup the draw kick, you will need to install a google chrome extension that 
 
 #### Setup the web application
 
-There are two versions of the VendHook included 
+* There are two versions of the VendHook included 
 
 .NET 4.5 - [VendAPI.Net\VendHook] Works on Windows Vista/7/8/2008
 
