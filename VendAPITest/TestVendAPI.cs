@@ -12,6 +12,20 @@
     public class TestVendApi : BaseVendTest
     {
         [TestMethod]
+        public void ShouldBeAbleToRetrieveProductsWhenThereAreMoreThan100Products()
+        {
+            var products = new VendApi(this.Url, this.Username, this.Password).GetProducts(Product.OrderBy.name, false, true);
+            Assert.IsNotNull(products);
+            Assert.IsTrue(products.Length > 100);
+            for (int i = 0; i < products.Length - 1; i++)
+            {
+                var p1 = products[i].Name.ToUpper();
+                var p2 = products[i + 1].Name.ToUpper();
+                Assert.IsTrue(string.Compare(p1, p2) < 0, "string compare failed " + string.Compare(p1, p2) + " " + p1 + " " + p2);
+            }
+        }
+
+        [TestMethod]
         public void ShouldBeAbleToRetrieveProductsOrderedByName()
         {
             var products = new VendApi(this.Url, this.Username, this.Password).GetProducts(Product.OrderBy.name, false, true);
