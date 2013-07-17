@@ -26,7 +26,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 
             if (registerSale.payment_type_id == 1) {
                 console.log("Forwarding request " + salestring);
-                var request = jQuery.get("https://localhost/Hardis/OpenCashRegister.aspx")
+                var request = jQuery.get("https://localhost/VendHook/OpenCashRegister.aspx")
             }
         }
     }
