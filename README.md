@@ -32,26 +32,39 @@ There are two versions included
 
 #Pre-requisites
 1. POS Printer Driver
+	
 	a. Use CD From POS vendor
 	
 2. IIS installed
+	
 	a. Windows Vista/7/2008 go to Start->Control Panel->Program and Features->Turn Windows Features On or Off
+	
 	a. Windows XP go to Start->Control Panel->Add Remove Programs->Windows Features
+	
 	b. Ensure Internet Information Services is checked (The square check contains everything needed)
+	
 	c. Click OK
 
 3. Know your external IP Address
+	
 	a. Google "Whats my ip address"
+	
 	b. Your public IP address is <your external IP address>
 
 4. Known your computers internal IP address
+	
 	a. Start->Run->cmd.exe
+	
 	b. at the command prompt type: ipconfig
+	
 	c. IPv4 Address .  .  .  .  .  .  . : <your internal address>
 
 5. Know your stores external IP address
+	
 	a. Start->Run->cmd.exe
+	
 	b. at the command prompt type: ping <yourstore>.vendhq.com
+	
 	c. Reply from <your external IP address>: bytes=32 time=428ms TTL=44
 
 #Install web app
@@ -64,7 +77,9 @@ There are two versions included
 .NET 4.0 - [VendAPI.Net\Vend.Net2] directory
 6. Click OK
 7. Test web site
+	
 	a. Open browser and navigate to http://localhost/VendHook/
+	
 	b. Verify the browser does not return 404: page not found
 
 ## Setup the web hook
@@ -78,11 +93,17 @@ There are two versions included
 6. Select sale.update from the drop down
 7. Click Save
 8. Test the Webhook
+	
 	a. Click on View for the newly added web hook
+	
 	b. Click Test Web Hook
+	
 	c. Wait 10 seconds and refresh the page
+	
 	d. Verify the status is Successful and Response was 200
+	
 	e. If not, hints for Response codes
+	
 		<empty>: Verify the port has been forwarded correctly.
 		404: The address entered in the web hook is incorrect.
 		500: The web application crashed - revert changes and try again
