@@ -15,6 +15,14 @@ To setup a remote printer, you will need to forward a webhook post from VendHQ t
 
 To setup the draw kick, you will need to install a google chrome extension that makes a web posts to your POS terminal.
 
+### Setup the web application
+
+* There are two versions of the VendHook included 
+
+.NET 4.5 - [VendAPI.Net\VendHook] Works on Windows Vista/7/8/2008
+
+.NET 4.0 - [VendAPI.Net\Vend.Net2] Works on Windows XP SP3/Windows Embedded
+
 ####Pre-requisites
 * POS Printer Driver
 	+ Use CD From POS vendor
@@ -42,16 +50,8 @@ To setup the draw kick, you will need to install a google chrome extension that 
 * Set the server address to the computer with the printer's IP address (192.168.1.7)
 * Set the External Port Start and External Port End to your port (55021)
 * Set the Internal Port Start to 80
-* Set the Remote IP Address to 
+* Set the Remote IP Address to ping of *your store*.vendhq.com
 * Save 
-
-#### Setup the web application
-
-There are two versions of the VendHook included 
-
-.NET 4.5 - [VendAPI.Net\VendHook] Works on Windows Vista/7/8/2008
-
-.NET 4.0 - [VendAPI.Net\Vend.Net2] Works on Windows XP SP3/Windows Embedded
 
 
 ####Install web app
@@ -80,7 +80,7 @@ There are two versions of the VendHook included
 #### Setup the web hook
 * Log on to your Vend Store
 * Click on setup
-* Append /api to the end of the address (http://yourstore.vendhq.com/setup/api)
+* Append /api to the end of the address (http://*yourstore*.vendhq.com/setup/api)
 * Click Add Webhook
 * enter URL:
 
