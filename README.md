@@ -15,14 +15,14 @@ To setup a remote printer, you will need to forward a webhook post from VendHQ t
 To setup the draw kick, you will need to install a google chrome extension that makes a web posts to your POS terminal.
 
 ## Setup a port Forward
-1. Select a port to use, for example 55021
-2. Log on to your internet modem/router
-3. Click on Advanced -> Port Forwarding
-4. Set the server address to the computer with the printer's IP address (192.168.1.7)
-5. Set the External Port Start and External Port End to your port (55021)
-6. Set the Internal Port Start to 80
-7. Set the Remote IP Address to 
-8. Save 
+* Select a port to use, for example 55021
+* Log on to your internet modem/router
+* Click on Advanced -> Port Forwarding
+* Set the server address to the computer with the printer's IP address (192.168.1.7)
+* Set the External Port Start and External Port End to your port (55021)
+* Set the Internal Port Start to 80
+* Set the Remote IP Address to 
+* Save 
 
 ## Setup the web application
 
@@ -31,78 +31,67 @@ There are two versions included
 .NET 4.0 - [VendAPI.Net\Vend.Net2] Works on Windows XP SP3/Windows Embedded
 
 #Pre-requisites
-1. POS Printer Driver
-	
-	a. Use CD From POS vendor
-	
-2. IIS installed
-	
-	a. Windows Vista/7/2008 go to Start->Control Panel->Program and Features->Turn Windows Features On or Off
-	
-	a. Windows XP go to Start->Control Panel->Add Remove Programs->Windows Features
-	
-	b. Ensure Internet Information Services is checked (The square check contains everything needed)
-	
-	c. Click OK
-
-3. Know your external IP Address
-	
-	a. Google "Whats my ip address"
-	
-	b. Your public IP address is <your external IP address>
-
-4. Known your computers internal IP address
-	
-	a. Start->Run->cmd.exe
-	
-	b. at the command prompt type: ipconfig
-	
-	c. IPv4 Address .  .  .  .  .  .  . : <your internal address>
-
-5. Know your stores external IP address
-	
-	a. Start->Run->cmd.exe
-	
-	b. at the command prompt type: ping <yourstore>.vendhq.com
-	
-	c. Reply from <your external IP address>: bytes=32 time=428ms TTL=44
+* POS Printer Driver
+	+ Use CD From POS vendor
+* IIS installed
+	+ Windows Vista/7/2008 go to Start->Control Panel->Program and Features->Turn Windows Features On or Off
+	+ Windows XP go to Start->Control Panel->Add Remove Programs->Windows Features
+	+ Ensure Internet Information Services is checked (The square check contains everything needed)
+	+ Click OK
+* Know your external IP Address
+	+ Google "Whats my ip address"
+	+ Your public IP address is <your external IP address>
+* Known your computers internal IP address
+	+ Start->Run->cmd.exe
+	+ at the command prompt type: ipconfig
+	+ IPv4 Address .  .  .  .  .  .  . : <your internal address>
+* Know your stores external IP address
+	+ Start->Run->cmd.exe
+	+ at the command prompt type: ping <yourstore>.vendhq.com
+	+ Reply from <your external IP address>: bytes=32 time=428ms TTL=44
 
 #Install web app
+
+* Open web.config and set your Url, Username, and Password
+
+.NET 4.5 - [VendAPI.Net\VendHook] directory
+
+.NET 4.0 - [VendAPI.Net\Vend.Net2] directory
 
 * Open IIS Management Studio: Start->Control Panel->Administration Tools->Internet Information Services (IIS) Manager
 * Expand the Connections tree: <Your Computer>->Sites->Default Web Site
 * Right click on Default Web Site and select "Add Application"
 * Enter Alias: VendHook
 * Enter Path: Path to 
+
 .NET 4.5 - [VendAPI.Net\VendHook] directory
+
 .NET 4.0 - [VendAPI.Net\Vend.Net2] directory
+
 * Click OK
 * Test web site
 	+ Open browser and navigate to http://localhost/VendHook/
 	+ Verify the browser does not return 404: page not found
 
 ## Setup the web hook
-1. Log on to your Vend Store
-2. Click on setup
-3. Append /api to the end of the address (http://yourstore.vendhq.com/setup/api)
-4. Click Add Webhook
-5. enter URL:
+* Log on to your Vend Store
+* Click on setup
+* Append /api to the end of the address (http://yourstore.vendhq.com/setup/api)
+* Click Add Webhook
+* enter URL:
+
 .NET 4.0 [VendAPI.Net\Vend.Net2]  http://<your external ip address>:55021/VendHook/RegisterSaleHook.aspx
+
 .NET 4.5 - [VendAPI.Net\VendHook] http://<your external ip address>:55021/VendHook/api/RegisterSales
-6. Select sale.update from the drop down
-7. Click Save
-8. Test the Webhook
-	
-	a. Click on View for the newly added web hook
-	
-	b. Click Test Web Hook
-	
-	c. Wait 10 seconds and refresh the page
-	
-	d. Verify the status is Successful and Response was 200
-	
-	e. If not, hints for Response codes
-	
+
+* Select sale.update from the drop down
+* Click Save
+* Test the Webhook
+	+ Click on View for the newly added web hook
+	+ Click Test Web Hook
+	+ Wait 10 seconds and refresh the page
+	+ Verify the status is Successful and Response was 200
+	+ If not, hints for Response codes
 		<empty>: Verify the port has been forwarded correctly.
 		404: The address entered in the web hook is incorrect.
 		500: The web application crashed - revert changes and try again
@@ -113,14 +102,14 @@ The is a google chrome extension that will post a register sale to the address c
 
 if using the .Net 4.5 version open VendAPI.Net\Extensions\background.js and change jQuery.get("https://localhost/VendHook/OpenCashRegister.aspx") to jQuery.get("https://localhost/VendHook/api/CashRegister")
 
-1. Open Google Chrome
-2. Click on Customise and control Google Chrome->Tools->Extensions
-	a. Customise and control Google Chrome is the three horizontal bars button below the close windows X
-3. Tick the check box "Developer mode"
-4. Click Load unpacked extension... button
-5. Select the [VendAPI.Net\Extensions] directory
-6. Click OK
-7. Test: Run a sale through your vend store and do not print a receipt.  The cash register should still kick.
+* Open Google Chrome
+* Click on Customise and control Google Chrome->Tools->Extensions
+	+ Customise and control Google Chrome is the three horizontal bars button below the close windows X
+* Tick the check box "Developer mode"
+* Click Load unpacked extension... button
+* Select the [VendAPI.Net\Extensions] directory
+* Click OK
+* Test: Run a sale through your vend store and do not print a receipt.  The cash register should still kick.
 
 ### Setup - To run the unit tests:
 
@@ -187,5 +176,3 @@ the products were selected from the available products returned from GetProducts
 	};
 
 	var savedRegisterSale = new VendApi(Url, Username, Password).SaveRegisterSale(registerSale);
-
-	
