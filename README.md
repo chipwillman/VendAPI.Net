@@ -68,19 +68,18 @@ There are two versions included
 	c. Reply from <your external IP address>: bytes=32 time=428ms TTL=44
 
 #Install web app
-1. Open IIS Management Studio: Start->Control Panel->Administration Tools->Internet Information Services (IIS) Manager
-2. Expand the Connections tree: <Your Computer>->Sites->Default Web Site
-3. Right click on Default Web Site and select "Add Application"
-4. Enter Alias: VendHook
-5. Enter Path: Path to 
+
+* Open IIS Management Studio: Start->Control Panel->Administration Tools->Internet Information Services (IIS) Manager
+* Expand the Connections tree: <Your Computer>->Sites->Default Web Site
+* Right click on Default Web Site and select "Add Application"
+* Enter Alias: VendHook
+* Enter Path: Path to 
 .NET 4.5 - [VendAPI.Net\VendHook] directory
 .NET 4.0 - [VendAPI.Net\Vend.Net2] directory
-6. Click OK
-7. Test web site
-	
-	a. Open browser and navigate to http://localhost/VendHook/
-	
-	b. Verify the browser does not return 404: page not found
+* Click OK
+* Test web site
+	** Open browser and navigate to http://localhost/VendHook/
+	** Verify the browser does not return 404: page not found
 
 ## Setup the web hook
 1. Log on to your Vend Store
