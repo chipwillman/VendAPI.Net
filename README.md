@@ -78,8 +78,8 @@ There are two versions included
 .NET 4.0 - [VendAPI.Net\Vend.Net2] directory
 * Click OK
 * Test web site
-	** Open browser and navigate to http://localhost/VendHook/
-	** Verify the browser does not return 404: page not found
+	+ Open browser and navigate to http://localhost/VendHook/
+	+ Verify the browser does not return 404: page not found
 
 ## Setup the web hook
 1. Log on to your Vend Store
