@@ -122,5 +122,7 @@
 
         [DataMember(Name = "deleted_at")]
         public string DeletedAt { get; set; }
+
+        public int PrintQuantity { get; set; }
     }
 }

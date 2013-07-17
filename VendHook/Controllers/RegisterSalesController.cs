@@ -18,6 +18,16 @@
 
         private static SortedList<Guid, Guid> printedRegisterSales = new SortedList<Guid, Guid>();
 
+        private static byte[] normalPrintMode = new byte[] { 27, 33, 0 };
+        
+        private static byte[] headerPrintMode = new byte[] { 27, 33, 57 };
+
+        private static byte[] menuPrintMode = new byte[] { 27, 33, 25  };
+
+        private static byte[] underlinePrintModeOn = new byte[] { 27, 45, 2 };
+
+        private static byte[] underlinePrintModeOff = new byte[] { 27, 45, 0 };
+
         public Product[] Products
         {
             get
@@ -85,31 +95,61 @@
                     {
                         tableName = registerSale.CustomerName;
                     }
-                    else if (!string.IsNullOrEmpty(registerSale.CustomerId))
+                    else if (!string.IsNullOrEmpty(registerSale.CustomerId) && registerSale.CustomerId != Guid.Empty.ToString())
                     {
                         var customer = api.GetCustomer(registerSale.CustomerId);
-                        if (customer != null)
+                        if (customer != null && customer.ContactFirstName != null && customer.ContactLastName != null)
                         {
                             tableName = customer.ContactFirstName + " " + customer.ContactLastName;
                         }
+                        else
+                        {
+                            tableName = "WALKIN";
+                        }
                     }
 
-                    this.PrintToKitchen(tableName, printList);
+                    this.PrintToKitchen(registerSale, tableName, printList);
                 }
             }
 
             return this.Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        private void PrintToKitchen(string tableName, List<Product> printList)
+        private void PrintToKitchen(RegisterSale registerSale, string tableName, List<Product> printList)
         {
             var printString = new StringBuilder();
-            var setFont = new byte[] { 27, 33, 25 };
-            printString.Append(Encoding.ASCII.GetString(setFont));
+            printString.Append(Encoding.ASCII.GetString(headerPrintMode));
             printString.Append(tableName + "\n\n");
+            printString.Append(Encoding.ASCII.GetString(normalPrintMode));
+            printString.Append("   Created Date: " + registerSale.SaleDate + "\n");
+
+            printString.Append(Encoding.ASCII.GetString(menuPrintMode));
+            printString.Append("    Printed Date: " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + "\n\n");
+
+            printString.Append(Encoding.ASCII.GetString(underlinePrintModeOn));
+            printString.Append("Foor Order\n\n");
+            printString.Append(Encoding.ASCII.GetString(underlinePrintModeOff));
+   
+            printString.Append(Encoding.ASCII.GetString(menuPrintMode));
             foreach (var product in printList)
             {
-                printString.Append(product.Name + "\n");
+                printString.Append("\t" + product.Name + "\n");
+            }
+
+            printString.Append("\n\n");
+            printString.Append(Encoding.ASCII.GetString(normalPrintMode));
+            if (!string.IsNullOrEmpty(registerSale.Note))
+            {
+                printString.Append(Encoding.ASCII.GetString(underlinePrintModeOn));
+                printString.Append("Notes:\n\n");
+                printString.Append(Encoding.ASCII.GetString(underlinePrintModeOff));
+                printString.Append(Encoding.ASCII.GetString(normalPrintMode));
+                printString.Append(registerSale.Note + "\n");                
+            }
+
+            if (!string.IsNullOrEmpty(registerSale.UserName))
+            {
+                printString.Append("User: " + registerSale.UserName);
             }
 
             printString.Append("\n\n");

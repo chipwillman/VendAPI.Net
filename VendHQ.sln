@@ -11,6 +11,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendHook.Tests", "VendHook.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vend.TestBench", "Vend.TestBench\Vend.TestBench.csproj", "{C0266A75-07CC-43A4-8F82-CA741F451D6C}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Vend.net2", "Vend.net2\", "{19605AA1-3127-4283-925D-7B8E3D3F14D0}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{DA4CE8CE-B671-4985-A942-24841D31D023}|VendAPI.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/Vend.net2"
+		Debug.AspNetCompiler.PhysicalPath = "Vend.net2\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Vend.net2\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Vend.net2"
+		Release.AspNetCompiler.PhysicalPath = "Vend.net2\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Vend.net2\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50302"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -70,6 +91,16 @@ Global
 		{C0266A75-07CC-43A4-8F82-CA741F451D6C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C0266A75-07CC-43A4-8F82-CA741F451D6C}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{C0266A75-07CC-43A4-8F82-CA741F451D6C}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{19605AA1-3127-4283-925D-7B8E3D3F14D0}.CD_ROM|Any CPU.ActiveCfg = Debug|Any CPU
+		{19605AA1-3127-4283-925D-7B8E3D3F14D0}.CD_ROM|Any CPU.Build.0 = Debug|Any CPU
+		{19605AA1-3127-4283-925D-7B8E3D3F14D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19605AA1-3127-4283-925D-7B8E3D3F14D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19605AA1-3127-4283-925D-7B8E3D3F14D0}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{19605AA1-3127-4283-925D-7B8E3D3F14D0}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{19605AA1-3127-4283-925D-7B8E3D3F14D0}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{19605AA1-3127-4283-925D-7B8E3D3F14D0}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{19605AA1-3127-4283-925D-7B8E3D3F14D0}.SingleImage|Any CPU.ActiveCfg = Debug|Any CPU
+		{19605AA1-3127-4283-925D-7B8E3D3F14D0}.SingleImage|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
 ﻿namespace VendAPI
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
@@ -22,7 +23,7 @@
 
         public string Username { get; set; }
 
-        public Product[] GetProducts(Product.OrderBy orderBy, bool reverseOrder, bool? active)
+        public Product[] GetProductPage(int page, Product.OrderBy orderBy, bool reverseOrder, bool? active, out int totalPages)
         {
             var result = new Product[0];
             var sb = new StringBuilder();
@@ -41,15 +42,43 @@
                 sb.Append("active=" + (active.Value ? "1" : "0") + "&");
             }
 
+            if (page != 1)
+            {
+                sb.Append("page=" + page + "&");
+            }
+
+            totalPages = 1;
             var paramString = sb.ToString().TrimEnd('&');
             var response = new VendRequest(this.Url, this.Username, this.Password).Get("/api/products?" + paramString);
             if (!string.IsNullOrEmpty(response))
             {
                 var productList = response.FromJson<ProductList>();
                 result = productList.Products;
+                if (productList.Pagination != null && productList.Pagination.Pages > 0)
+                {
+                    totalPages = productList.Pagination.Pages;
+                }
+            }
+            return result;
+            
+        }
+
+        public Product[] GetProducts(Product.OrderBy orderBy, bool reverseOrder, bool? active)
+        {
+            var result = new List<Product>();
+
+            int page = 1;
+            int totalPages;
+            result.AddRange(this.GetProductPage(page, orderBy, reverseOrder, active, out totalPages));
+            if (totalPages > 1)
+            {
+                for (page = 2; page <= totalPages; page++)
+                {
+                    result.AddRange(this.GetProductPage(page, orderBy, reverseOrder, active, out totalPages));
+                }
             }
 
-            return result;
+            return result.ToArray();
         }
 
         public RegisterSale[] GetRegisterSales(Guid? outletId, string tag, string[] status)
