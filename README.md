@@ -9,12 +9,13 @@ The vend hook web site is designed to consume web hooks from the VendHQ online s
 
 The RegisterSale Controller looks for products that have been purchased of type "food".  When found, it will print the food order to the configured kitchen printer.
 
-The CashRegister Controller looks for new register sale payments and with send the draw kick command to the printer.  This allows automatic opening of the Cash Drawer in environments where receipts are not used such as the hospitality industry, ie. pubs and bars.
+The CashRegister Controller looks for new register sale payments and with a payment type of cash send the draw kick command to the printer.  This allows automatic opening of the Cash Drawer in environments where receipts are not used such as the hospitality industry, ie. pubs and bars.
 
 To setup a remote printer, you will need to forward a webhook post from VendHQ to a windows computer where the printer is installed.
+
 To setup the draw kick, you will need to install a google chrome extension that makes a web posts to your POS terminal.
 
-#Pre-requisites
+####Pre-requisites
 * POS Printer Driver
 	+ Use CD From POS vendor
 * IIS installed
@@ -34,7 +35,7 @@ To setup the draw kick, you will need to install a google chrome extension that 
 	+ at the command prompt type: ping *yourstore*.vendhq.com
 	+ Reply from *your external IP address*: bytes=32 time=428ms TTL=44
 
-## Setup a port Forward
+#### Setup a port Forward
 * Select a port to use, for example 55021
 * Log on to your internet modem/router
 * Click on Advanced -> Port Forwarding
@@ -44,14 +45,16 @@ To setup the draw kick, you will need to install a google chrome extension that 
 * Set the Remote IP Address to 
 * Save 
 
-## Setup the web application
+#### Setup the web application
 
-There are two versions included 
+There are two versions of the VendHook included 
+
 .NET 4.5 - [VendAPI.Net\VendHook] Works on Windows Vista/7/8/2008
+
 .NET 4.0 - [VendAPI.Net\Vend.Net2] Works on Windows XP SP3/Windows Embedded
 
 
-#Install web app
+####Install web app
 
 * Open web.config and set your Url, Username, and Password
 
@@ -74,7 +77,7 @@ There are two versions included
 	+ Open browser and navigate to http://localhost/VendHook/
 	+ Verify the browser does not return 404: page not found
 
-## Setup the web hook
+#### Setup the web hook
 * Log on to your Vend Store
 * Click on setup
 * Append /api to the end of the address (http://yourstore.vendhq.com/setup/api)
@@ -97,9 +100,9 @@ There are two versions included
 		404: The address entered in the web hook is incorrect.
 		500: The web application crashed - revert changes and try again
 
-### Extension
+#### Cash Drawer Kick Extension
 
-The is a google chrome extension that will post a register sale to the address configured.  This can be used to automatically open the cash register when a cash sale is made without a receipt being printed.
+This Google chrome extension will post a register sale to the address configured.  This can be used with the VendHook website to automatically open the cash register when a cash sale is made without a receipt being printed.
 
 if using the .Net 4.5 version open VendAPI.Net\Extensions\background.js and change jQuery.get("https://localhost/VendHook/OpenCashRegister.aspx") to jQuery.get("https://localhost/VendHook/api/CashRegister")
 
