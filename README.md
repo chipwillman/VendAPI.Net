@@ -24,15 +24,15 @@ To setup the draw kick, you will need to install a google chrome extension that 
 	+ Click OK
 * Know your external IP Address
 	+ Google "Whats my ip address"
-	+ Your public IP address is <your external IP address>
+	+ Your public IP address is *your external IP address*
 * Known your computers internal IP address
 	+ Start->Run->cmd.exe
 	+ at the command prompt type: ipconfig
-	+ IPv4 Address .  .  .  .  .  .  . : <your internal address>
+	+ IPv4 Address .  .  .  .  .  .  . : *your internal address*
 * Know your stores external IP address
 	+ Start->Run->cmd.exe
-	+ at the command prompt type: ping <yourstore>.vendhq.com
-	+ Reply from <your external IP address>: bytes=32 time=428ms TTL=44
+	+ at the command prompt type: ping *yourstore*.vendhq.com
+	+ Reply from *your external IP address*: bytes=32 time=428ms TTL=44
 
 ## Setup a port Forward
 * Select a port to use, for example 55021
@@ -60,7 +60,7 @@ There are two versions included
 .NET 4.0 - [VendAPI.Net\Vend.Net2] directory
 
 * Open IIS Management Studio: Start->Control Panel->Administration Tools->Internet Information Services (IIS) Manager
-* Expand the Connections tree: <Your Computer>->Sites->Default Web Site
+* Expand the Connections tree: *Your Computer*->Sites->Default Web Site
 * Right click on Default Web Site and select "Add Application"
 * Enter Alias: VendHook
 * Enter Path: Path to 
@@ -81,9 +81,9 @@ There are two versions included
 * Click Add Webhook
 * enter URL:
 
-.NET 4.0 [VendAPI.Net\Vend.Net2]  http://<your external ip address>:55021/VendHook/RegisterSaleHook.aspx
+.NET 4.0 [VendAPI.Net\Vend.Net2]  http://*your external ip address*:55021/VendHook/RegisterSaleHook.aspx
 
-.NET 4.5 - [VendAPI.Net\VendHook] http://<your external ip address>:55021/VendHook/api/RegisterSales
+.NET 4.5 - [VendAPI.Net\VendHook] http://*your external ip address*:55021/VendHook/api/RegisterSales
 
 * Select sale.update from the drop down
 * Click Save
@@ -93,7 +93,7 @@ There are two versions included
 	+ Wait 10 seconds and refresh the page
 	+ Verify the status is Successful and Response was 200
 	+ If not, hints for Response codes
-		<empty>: Verify the port has been forwarded correctly.
+		*empty*: Verify the port has been forwarded correctly.
 		404: The address entered in the web hook is incorrect.
 		500: The web application crashed - revert changes and try again
 
