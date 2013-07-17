@@ -53,6 +53,7 @@ To setup the draw kick, you will need to install a google chrome extension that 
 * Set the Remote IP Address to ping of *your store*.vendhq.com
 * Save 
 
+* There are two versions of the VendHook included 
 
 ####Install web app
 
