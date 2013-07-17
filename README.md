@@ -40,19 +40,19 @@ There are two versions included
 	b. Ensure Internet Information Services is checked (The square check contains everything needed)
 	c. Click OK
 
-#Know your external IP Address
-1. Google "Whats my ip address"
-2. Your public IP address is <your external IP address>
+3. Know your external IP Address
+	a. Google "Whats my ip address"
+	b. Your public IP address is <your external IP address>
 
-#Known your computers internal IP address
-1. Start->Run->cmd.exe
-2. at the command prompt type: ipconfig
-3. IPv4 Address .  .  .  .  .  .  . : <your internal address>
+4. Known your computers internal IP address
+	a. Start->Run->cmd.exe
+	b. at the command prompt type: ipconfig
+	c. IPv4 Address .  .  .  .  .  .  . : <your internal address>
 
-#Know your stores external IP address
-1. Start->Run->cmd.exe
-2. at the command prompt type: ping <yourstore>.vendhq.com
-3. Reply from <your external IP address>: bytes=32 time=428ms TTL=44
+5. Know your stores external IP address
+	a. Start->Run->cmd.exe
+	b. at the command prompt type: ping <yourstore>.vendhq.com
+	c. Reply from <your external IP address>: bytes=32 time=428ms TTL=44
 
 #Install web app
 1. Open IIS Management Studio: Start->Control Panel->Administration Tools->Internet Information Services (IIS) Manager
@@ -77,7 +77,7 @@ There are two versions included
 .NET 4.5 - [VendAPI.Net\VendHook] http://<your external ip address>:55021/VendHook/api/RegisterSales
 6. Select sale.update from the drop down
 7. Click Save
-6. Test the Webhook
+8. Test the Webhook
 	a. Click on View for the newly added web hook
 	b. Click Test Web Hook
 	c. Wait 10 seconds and refresh the page
