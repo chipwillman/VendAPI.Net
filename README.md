@@ -14,22 +14,6 @@ The CashRegister Controller looks for new register sale payments and with send t
 To setup a remote printer, you will need to forward a webhook post from VendHQ to a windows computer where the printer is installed.
 To setup the draw kick, you will need to install a google chrome extension that makes a web posts to your POS terminal.
 
-## Setup a port Forward
-* Select a port to use, for example 55021
-* Log on to your internet modem/router
-* Click on Advanced -> Port Forwarding
-* Set the server address to the computer with the printer's IP address (192.168.1.7)
-* Set the External Port Start and External Port End to your port (55021)
-* Set the Internal Port Start to 80
-* Set the Remote IP Address to 
-* Save 
-
-## Setup the web application
-
-There are two versions included 
-.NET 4.5 - [VendAPI.Net\VendHook] Works on Windows Vista/7/8/2008
-.NET 4.0 - [VendAPI.Net\Vend.Net2] Works on Windows XP SP3/Windows Embedded
-
 #Pre-requisites
 * POS Printer Driver
 	+ Use CD From POS vendor
@@ -49,6 +33,23 @@ There are two versions included
 	+ Start->Run->cmd.exe
 	+ at the command prompt type: ping <yourstore>.vendhq.com
 	+ Reply from <your external IP address>: bytes=32 time=428ms TTL=44
+
+## Setup a port Forward
+* Select a port to use, for example 55021
+* Log on to your internet modem/router
+* Click on Advanced -> Port Forwarding
+* Set the server address to the computer with the printer's IP address (192.168.1.7)
+* Set the External Port Start and External Port End to your port (55021)
+* Set the Internal Port Start to 80
+* Set the Remote IP Address to 
+* Save 
+
+## Setup the web application
+
+There are two versions included 
+.NET 4.5 - [VendAPI.Net\VendHook] Works on Windows Vista/7/8/2008
+.NET 4.0 - [VendAPI.Net\Vend.Net2] Works on Windows XP SP3/Windows Embedded
+
 
 #Install web app
 
