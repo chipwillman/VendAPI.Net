@@ -16,7 +16,6 @@ function bin2String(array) {
 chrome.webRequest.onBeforeRequest.addListener(
   function(data) {
     console.log("Vend HQ request intercepted: " + data.url);
-      // Redirect the lolcal request to a random loldog URL.
     if (data.requestBody != null && data.requestBody.raw != null) {
         var data = new Uint8Array(data.requestBody.raw[0].bytes);
         var salestring = bin2String(data);
@@ -26,19 +25,21 @@ chrome.webRequest.onBeforeRequest.addListener(
 
             if (registerSale.payment_type_id == 1) {
                 console.log("Forwarding request " + salestring);
-                var request = jQuery.get("https://localhost/VendHook/OpenCashRegister.aspx")
+                var request = jQuery.get("https://localhost/VendHook/api/OpenRegister")
             }
         }
+		// jQuery.post("https://localhost/VendHook/api/RegisterSale", data.requestBody, function () {
+		jQuery.post("https://localhost/VendHook/api/RegisterSale", sale.stringify(), function () {
+			console.log("Success");
+		}		
     }
     return { cancel: false };
   },
-  // filters
   {
     urls: [
       "*://*.vendhq.com/*"
     ],
     types: ["xmlhttprequest", "object"]
   },
-  // extraInfoSpec
   ["requestBody", "blocking"]
 );

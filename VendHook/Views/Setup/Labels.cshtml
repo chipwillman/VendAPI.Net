@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Labels";
+}
+<link rel="stylesheet" href="~/Content/themes/base/jquery.ui.all.css">
+
+<div id="toolbox_tabs" style="float:left">
+    <h3>Label Designer</h3>
+    <ul>
+        <li><a href="#toolbox_tabs-1">Toolbox</a></li>
+        <li><a href="#toolbox_tabs-2">Properties</a></li>
+        <li><a href="#toolbox_tabs-3">Commands</a></li>
+    </ul>
+    <div id="toolbox_tabs-1">
+        <h3>Fields</h3>
+        <div id="fields" data-bind="foreach: reciept_fields">
+            <button class="editor_button" data-bind="text: name, click: $parent.AddFieldElement"></button><br/>
+        </div>
+        <input id="free_text_value" data-bind="value: freeTextValue"/><br />
+        <button id="AddFreeTextButton" data-bind="click: AddFreeText">Add Free Text</button><br/>
+        <input id="repeater_name" value="enter repeater name"/><br />
+        <button id="AddRepeaterButton" data-bind="click: AddRepeater">Add Repeater</button><br/>
+    </div>
+    <div id="toolbox_tabs-2">
+        <h3>Properties</h3> 
+        <div id="properties" data-bind="foreach: property_fields">
+            <label data-bind="text: name"></label>
+            <input data-bind="value: value"/><br />
+        </div>
+    </div>    
+
+    <div id="toolbox_tabs-3">
+        <h3>Commands</h3>
+        <div id="properties_div">
+           Receipt Name:<br />
+           <input id="ReceiptName" data-bind="value: receiptName" />
+           <input type="hidden" id="ReceiptId" data-bind="value: receiptId" />
+        </div>
+
+        <div id="commands_div">
+            <button class="editor_button" data-bind="click: SaveReceipt">Save</button>
+        </div>
+        <h3>Existing Receipts</h3>
+        <select name="existingReceiptsSelect" data-bind="options: existingReceipts, optionsText: 'receiptName', value: selectedReceiptId, optionsCaption: 'Select Receipt...'"></select>
+        <br/>
+        <button class="editor_button" name="LoadReceipt" data-bind="click: LoadReceipt">Load</button>
+    </div>
+</div>
+
+<div id="main">
+    <div id="element_buttons" style="float:right;padding:5px">
+        <br />
+        <br />
+        <br />
+        <br />
+        <button id="deleteElementButton" data-bind="click: DeleteElement">Del</button>
+    </div>
+
+    <div id="glassbox" style="float:right" data-bind="foreach: { data: receipt_lines, afterAdd: afterAddElement }">
+        <div class="element ui-widget-content" style="position:absolute;">
+            <label style="display: none" class="id_label" data-bind="text: id"></label>
+            <label style="display: none" class="type" data-bind="text: type"></label>
+            <label style="display: none" class="left" data-bind="text: left"></label>
+            <label style="display: none" class="top" data-bind="text: top"></label>
+            <label style="display: none" class="width" data-bind="text: width"></label>
+            <label style="display: none" class="height" data-bind="text: height"></label>
+            <label data-bind="text: text"></label>
+        </div>
+    </div>
+</div>    
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery-ui-1.8.20.js")
+    @Scripts.Render("~/Scripts/knockout-2.1.0.js")
+    @Scripts.Render("~/Scripts/Client/labels.js")
+}

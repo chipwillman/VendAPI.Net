@@ -754,3 +754,35 @@ tr.pager td {
             margin: 0;
         }
 }
+
+#glassbox {  
+    background:#FFF;  
+    border:1px solid #000;  
+    height:500px;  
+    margin:30px auto auto auto;  
+    position:relative;  
+    width:320px;  
+    -moz-border-radius: 10px;  
+    -webkit-border-radius: 10px;      
+}  
+  
+.element {  
+    background:#FFF;  
+    border:1px #000 solid;  
+    cursor:move;   
+    height:32px;  
+    padding:3px 3px 3px 3px; 
+    width:202px;
+    /* -moz-border-radius: 10px;  
+    -webkit-border-radius: 10px;  */
+}  
+
+.editor_button {
+    width:150px;
+}
+  
+#respond{  
+    color:#fff;  
+    margin:0 auto 0 auto;  
+    width:960px;      
+}  
