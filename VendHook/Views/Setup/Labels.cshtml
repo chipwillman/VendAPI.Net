@@ -17,7 +17,6 @@
         </div>
         <input id="free_text_value" data-bind="value: freeTextValue"/><br />
         <button id="AddFreeTextButton" data-bind="click: AddFreeText">Add Free Text</button><br/>
-        <input id="repeater_name" value="enter repeater name"/><br />
         <button id="AddRepeaterButton" data-bind="click: AddRepeater">Add Repeater</button><br/>
     </div>
     <div id="toolbox_tabs-2">
@@ -37,12 +36,12 @@
         </div>
 
         <div id="commands_div">
-            <button class="editor_button" data-bind="click: SaveReceipt">Save</button>
+            <button class="editor_button" ndata-bind="click: SaveReceipt">Save</button>
         </div>
         <h3>Existing Receipts</h3>
         <select name="existingReceiptsSelect" data-bind="options: existingReceipts, optionsText: 'receiptName', value: selectedReceiptId, optionsCaption: 'Select Receipt...'"></select>
         <br/>
-        <button class="editor_button" name="LoadReceipt" data-bind="click: LoadReceipt">Load</button>
+        <button class="editor_button" name="LoadReceipt" ndata-bind="click: LoadReceipt">Load</button>
     </div>
 </div>
 
@@ -70,5 +69,9 @@
 @section Scripts {
     @Scripts.Render("~/Scripts/jquery-ui-1.8.20.js")
     @Scripts.Render("~/Scripts/knockout-2.1.0.js")
-    @Scripts.Render("~/Scripts/Client/labels.js")
+    @Scripts.Render("~/Scripts/guid.js")
+    @Scripts.Render("~/Scripts/Client/LabelMaker/label.js")
+    @Scripts.Render("~/Scripts/Client/LabelMaker/label_maker.js")
+    @Scripts.Render("~/Scripts/Client/LabelMaker/label_maker_ajax.js")
+    @Scripts.Render("~/Scripts/Client/LabelMaker/label_maker_gui.js")
 }

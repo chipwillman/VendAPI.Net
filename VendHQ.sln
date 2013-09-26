@@ -32,6 +32,11 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Vend.net2", "Vend.net2\", "
 		VWDPort = "50302"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{85674614-D721-48AF-9720-DA1B0BF29999}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
